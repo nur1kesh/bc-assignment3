@@ -1,120 +1,116 @@
-# 💹 AI Crypto Assistant
+# Kazakhstan Constitution QA AI (Powered by Gemini)
 
-An intelligent crypto assistant CLI that provides real-time cryptocurrency data, market stats, and news headlines, powered by CoinGecko, Binance, CryptoPanic APIs, and enhanced with Google Gemini AI for insightful summarization.
-
----
-
-## 🚀 Features
-
-* 🔍 Understands natural language queries about the top 50 cryptocurrencies.
-* 📈 Fetches live market data from **CoinGecko** and **Binance**.
-* 📰 Retrieves the latest crypto news headlines from CryptoPanic.
-* 🧠 Summarizes the data and query using Google Gemini (via Generative AI).
-* 💬 Responds in a conversational format with user-friendly information.
-* 🛠️ CLI interface for quick interaction (terminal-based).
+This Python application allows users to ask questions about the **Constitution of the Republic of Kazakhstan** using **Google's Gemini AI**. The AI is instructed to answer strictly based on the provided text, ensuring responses are grounded in the actual constitutional document.
 
 ---
 
-## 📦 Requirements
+## 📦 Features
 
-* Python 3.8+
-* .env file with the following:
-
-    GOOGLE_API_KEY=your_google_gemini_api_key
-  CRYPTOPANIC_API_KEY=your_cryptopanic_api_key
-  
+* Loads the Kazakhstan Constitution from a local text file.
+* Uses Gemini AI (`gemini-1.5-flash` or configurable model) for question answering.
+* Interactive command-line interface.
+* Secure handling of API keys using `.env` file or environment variables.
 
 ---
 
-## 📥 Installation
+## 🚀 Getting Started
 
-1. Clone the repository:
+### 1. Clone the Repository
 
-      git clone https://github.com/yourusername/ai-crypto-assistant.git
-   cd ai-crypto-assistant
-   
+git clone https://github.com/yourusername/kazakhstan-constitution-qa.git
+cd kazakhstan-constitution-qa
 
-2. Install dependencies:
+### 2. Install Dependencies
 
-      pip install -r requirements.txt
-   
+Make sure you have Python 3.7+ installed.
 
-3. Set up environment variables:
+pip install -r requirements.txt
 
-   Create a .env file in the root directory:
+### 3. Add Your Google API Key
 
-      GOOGLE_API_KEY=your_google_gemini_api_key
-   CRYPTOPANIC_API_KEY=your_cryptopanic_api_key
-   
+Create a .env file in the root directory and add your Google API key:
 
-4. Run the assistant:
+GOOGLE_API_KEY=your-google-api-key-here
 
-      python app.py
-   
+Or set it manually in your terminal session:
 
----
+export GOOGLE_API_KEY="your-google-api-key-here"
 
-## 🧪 Example Queries
+> Note: You must have access to the Google Generative AI API and a valid API key.
 
-What’s the latest news about Ethereum?
-Tell me about Bitcoin price and market cap.
-What's the current price of Solana?
-Should I buy Dogecoin now?
+### 4. Add the Constitution File
+
+Place the text version of the Kazakhstan Constitution in the project directory and name it g.txt. You can change the filename in the script if needed.
 
 ---
 
-## 🧠 How It Works
+## 🧠 Usage
 
-1. User Input: A natural query like “Tell me about Ethereum price and news”.
-2. Parsing: Identifies which of the top 50 coins the query is about.
-3. Data Gathering:
+Run the app:
 
-   * CoinGecko: Market cap, rank, CoinGecko price.
-   * Binance: Live trading price (USDT pair).
-   * CryptoPanic: Latest 5 news headlines.
-4. AI Summarization: Uses Google Gemini (`gemini-1.5-flash-latest`) to summarize the above into a concise report.
-5. Response Output: Prints a helpful AI-generated summary to the terminal.
+python main.py
 
----
+You’ll see a prompt where you can ask questions such as:
 
-## 📂 Project Structure
+Your question: What are the fundamental rights of citizens?
 
-├── app.py                 # Main application logic
-├── .env                   # Environment variables (not committed)
-├── requirements.txt       # Python dependencies
-├── README.md              # You are here
+To exit, type:
+
+Your question: quit
 
 ---
 
-## 📚 Dependencies
+## 🔧 Configuration
 
-* requests
-* python-dotenv
+Inside the script:
+
+* You can change the Gemini model by editing this line:
+
+model = genai.GenerativeModel('gemini-1.5-flash')
+
+Other options include:
+
+* 'gemini-pro'
+* 'gemini-1.5-pro' (better for very large documents)
+
+---
+
+## 📁 File Structure
+
+.
+├── main.py                 # Main application script
+├── g.txt                   # Constitution text file (you provide this)
+├── .env                    # Environment variables (optional)
+└── requirements.txt        # Python dependencies
+
+---
+
+## 🛡️ Security Notes
+
+* Avoid hardcoding your API key directly into the code.
+* .env file is not included in version control (add it to .gitignore if using Git).
+* The AI is instructed to rely only on the text provided, not outside data.
+
+---
+
+## ✅ Requirements
+
+* Python 3.7+
 * google-generativeai
+* python-dotenv
 
-Install via:
+To install manually:
 
-pip install requests python-dotenv google-generativeai
-
----
-
-## 🛑 Disclaimers
-
-* This tool does not offer financial advice.
-* AI responses are generated for informational and educational purposes only.
-* Always do your own research (DYOR) before investing.
+pip install google-generativeai python-dotenv
 
 ---
 
-## 📃 License
+## 📜 License
 
-MIT License. Feel free to fork, improve, or adapt.
+This project is open-source and available under the MIT License *(add one if needed)*.
 
 ---
 
-## 🙌 Acknowledgments
+## 🙋‍♂️ Questions or Feedback?
 
-* CoinGecko API
-* Binance API
-* CryptoPanic API
-* Google Generative AI (Gemini)
+Feel free to open an issue or submit a pull request.
